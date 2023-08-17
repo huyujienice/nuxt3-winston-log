@@ -2,6 +2,13 @@
   "name": "nuxt3-winston-log",
   "version": "0.1.0",
   "description": "nuxt3-winston-log",
+  "keywords": [
+    "nuxt",
+    "nuxt3",
+    "log",
+    "winston",
+    "nuxt3-winston-log"
+  ],
   "repository": "https://github.com/huyujienice/nuxt3-winston-log",
   "license": "MIT",
   "type": "module",
