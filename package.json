@@ -9,7 +9,8 @@
     "winston",
     "nuxt3-winston-log"
   ],
-  "repository": "https://github.com/huyujienice/nuxt3-winston-log",
+  "author":"clark",
+  "repository": "https://github.com/huyujienice/nuxt3-winston-log.git",
   "license": "MIT",
   "type": "module",
   "exports": {
