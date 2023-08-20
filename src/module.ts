@@ -30,7 +30,7 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {},
   setup(options: any, nuxt) {
     const defaultOptions = {
-      maxSize: "20m",
+      maxSize: "1024m",
       maxFiles: "14d",
       infoFileName: `logs/${process.env.NODE_ENV}-info-%DATE%.log`,
       errorFileName: `logs/${process.env.NODE_ENV}-error-%DATE%.log`,

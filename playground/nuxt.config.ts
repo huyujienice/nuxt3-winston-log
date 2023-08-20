@@ -1,8 +1,7 @@
 export default defineNuxtConfig({
   modules: ["../src/module"],
   nuxt3WinstonLog: {
-    maxSize: "30m",
-    maxFiles: "",
+    maxSize: "100m",
   },
   devtools: { enabled: true },
 });
