@@ -3,6 +3,7 @@ node_modules
 
 # Logs
 *.log*
+/logs
 
 # Temp directories
 .temp
