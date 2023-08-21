@@ -1,10 +1,11 @@
-import { defineNuxtPlugin } from "#app";
+import type { NitroAppPlugin } from "nitropack";
 
-export default defineNuxtPlugin((nuxtApp: any) => {
-  nuxtApp.hook("render:response", () => {
-    console.log("render:response");
-  });
-  nuxtApp.hook("render:html", () => {
+export default <NitroAppPlugin>function (nitroApp) {
+  nitroApp.hooks.hook("render:html", (html, { event }) => {
     console.log("render:html");
   });
-});
+
+  nitroApp.hooks.hook("render:response", (response, { event }) => {
+    console.log("render:response");
+  });
+};
