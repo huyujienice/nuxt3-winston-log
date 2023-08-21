@@ -28,7 +28,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {},
-  setup(options: any, nuxt) {
+  setup(options: any, nuxt: any) {
     const defaultOptions = {
       maxSize: "1024m",
       maxFiles: "14d",
