@@ -2,10 +2,9 @@ import type { NitroAppPlugin } from "nitropack";
 
 export default <NitroAppPlugin>function (nitroApp) {
   nitroApp.hooks.hook("render:html", (html, { event }) => {
-    console.log("render:html");
+    console.log(`Accessed ${event.node.req.url}`);
   });
-
-  nitroApp.hooks.hook("render:response", (response, { event }) => {
-    console.log("render:response");
-  });
+  // nitroApp.hooks.hook("render:response", (response, { event }) => {
+  //   console.log("render:response");
+  // });
 };
