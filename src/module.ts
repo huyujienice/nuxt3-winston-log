@@ -32,8 +32,8 @@ export default defineNuxtModule<ModuleOptions>({
     const defaultOptions = {
       maxSize: "1024m",
       maxFiles: "14d",
-      infoFileName: `logs/${process.env.NODE_ENV}-info-%DATE%.log`,
-      errorFileName: `logs/${process.env.NODE_ENV}-error-%DATE%.log`,
+      infoFileName: `logs/%DATE%-${process.env.NODE_ENV}-info.log`,
+      errorFileName: `logs/%DATE%-${process.env.NODE_ENV}-error.log`,
     };
     const mergeOptions = {
       maxSize: judgeIfStatus(options?.maxSize)
