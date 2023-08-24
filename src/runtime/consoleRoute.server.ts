@@ -1,6 +1,7 @@
 import type { NitroAppPlugin } from "nitropack";
 
 export default <NitroAppPlugin>function (nitroApp) {
+  // todo
   nitroApp.hooks.hook("render:html", (html, { event }) => {
     console.log(`Accessed ${event.node.req.url}`);
   });
