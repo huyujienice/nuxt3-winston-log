@@ -32,8 +32,10 @@ export default defineNuxtModule<ModuleOptions>({
     const defaultOptions = {
       maxSize: "1024m",
       maxFiles: "14d",
-      infoFileName: `logs/%DATE%-${process.env.NODE_ENV}-info.log`,
-      errorFileName: `logs/%DATE%-${process.env.NODE_ENV}-error.log`,
+      infoLogPath: `./logs`,
+      infoLogName: `%DATE%-${process.env.NODE_ENV}-info.log`,
+      errorLogPath: `./logs`,
+      errorLogName: `%DATE%-${process.env.NODE_ENV}-error.log`,
     };
     const mergeOptions = {
       maxSize: judgeIfStatus(options?.maxSize)
@@ -42,12 +44,18 @@ export default defineNuxtModule<ModuleOptions>({
       maxFiles: judgeIfStatus(options?.maxFiles)
         ? options.maxFiles
         : defaultOptions.maxFiles,
-      infoFileName: judgeIfStatus(options?.infoFileName)
-        ? options.infoFileName
-        : defaultOptions.infoFileName,
-      errorFileName: judgeIfStatus(options?.errorFileName)
-        ? options.errorFileName
-        : defaultOptions.errorFileName,
+      infoLogPath: judgeIfStatus(options?.infoLogPath)
+        ? options.infoLogPath
+        : defaultOptions.infoLogPath,
+      infoLogName: judgeIfStatus(options?.infoLogName)
+        ? options.infoLogName
+        : defaultOptions.infoLogName,
+      errorLogPath: judgeIfStatus(options?.errorLogPath)
+        ? options.errorLogPath
+        : defaultOptions.errorLogPath,
+      errorLogName: judgeIfStatus(options?.errorLogName)
+        ? options.errorLogName
+        : defaultOptions.errorLogName,
     };
     nuxt.options.runtimeConfig.public.nuxt3WinstonLog = mergeOptions;
     const resolver = createResolver(import.meta.url);

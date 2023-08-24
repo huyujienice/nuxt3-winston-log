@@ -1,12 +1,15 @@
 import * as winston from "winston";
 import DailyRotateFile from "winston-daily-rotate-file";
 const { createLogger, format, transports } = winston;
+import path from "path";
 
 interface LoggerOptions {
   maxSize: string;
   maxFiles: string;
-  infoFileName: string;
-  errorFileName: string;
+  infoLogPath: string;
+  infoLogName: string;
+  errorLogPath: string;
+  errorLogName: string;
 }
 export const getLogger = (options: LoggerOptions) => {
   const customFormat = format.combine(
@@ -16,8 +19,13 @@ export const getLogger = (options: LoggerOptions) => {
   );
   const maxSize = options.maxSize;
   const maxFiles = options.maxFiles;
-  const infoFileName = options.infoFileName;
-  const errorFileName = options.errorFileName;
+  const fullInfoPath = path.join(options.infoLogPath, options.infoLogName);
+  const fullerrorPath = path.join(options.errorLogPath, options.errorLogName);
+
+  // console.log(`maxSize=${maxSize}`);
+  // console.log(`maxFiles=${maxFiles}`);
+  // console.log(`fullInfoPath=${fullInfoPath}`);
+  // console.log(`fullerrorPath=${fullerrorPath}`);
 
   const defaultOptions = {
     format: customFormat,
@@ -30,12 +38,12 @@ export const getLogger = (options: LoggerOptions) => {
     format: customFormat,
     transports: [
       new DailyRotateFile({
-        filename: infoFileName,
+        filename: fullInfoPath,
         level: "info",
         ...defaultOptions,
       }),
       new DailyRotateFile({
-        filename: errorFileName,
+        filename: fullerrorPath,
         level: "error",
         ...defaultOptions,
       }),
