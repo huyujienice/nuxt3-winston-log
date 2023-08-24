@@ -4,12 +4,12 @@ nuxt3-winston-log is a Nuxt 3.x modules to add winston-powered logging to your N
 
 ## Introductions:
 
-By default the following events are captured:
+By default the following events are captured:     
 
-1. error level
-2. info level
+1. error level    
+2. info level    
 
-just simple use **console.log** to log info level and **console.error** to log error level
+just simple use **console.log** to log info level and **console.error** to log error level    
 
 ## Installation:
 
