@@ -48,11 +48,21 @@ $ yarn add nuxt3-winston-log # or npm i nuxt3-winston-log
       // It won't delete any file not contained in it. It can be a number of files or number of days
       maxFiles: "14d",
 
-      // full path for info level log files
-      infoFileName: `logs/%DATE%-${process.env.NODE_ENV}-info.log`,
+      // Path that info log files will be created in.
+      // Change this to keep things neat.
+      infoLogPath: `./logs`,
 
-      // full path for error level log files
-      errorFileName: `logs/%DATE%-${process.env.NODE_ENV}-error.log`,
+      // Name of info log file.
+      // Change this to keep things tidy.
+      infoLogName: `%DATE%-${process.env.NODE_ENV}-info.log`,
+
+      // Path that error log files will be created in.
+      // Change this to keep things neat.
+      errorLogPath: `./logs`,
+
+      // Name of error log file.
+      // Change this to keep things tidy.
+      errorLogName: `%DATE%-${process.env.NODE_ENV}-error.log`,
 
     }
     // ...
@@ -61,26 +71,11 @@ $ yarn add nuxt3-winston-log # or npm i nuxt3-winston-log
     Example in your apps `~/nuxt.config.js` file:
 
     ```js
-    function getPreFileName() {
-      const remotePrePath = `/root/html/logs/%DATE%-${process.env.NODE_ENV}-`;
-      const localPrePath = `logs/%DATE%-${process.env.NODE_ENV}-`;
-      if (process.env.NODE_ENV === "development") {
-        return localPrePath;
-      } else {
-        return remotePrePath;
-      }
-    }
-    const pre = getPreFileName();
-    const infoFileName = `${pre}info.log`;
-    const errorFileName = `${pre}error.log`;
-
     export default defineNuxtConfig({
       modules: ["nuxt3-winston-log"],
       nuxt3WinstonLog: {
         maxSize: "2048m",
         maxFiles: "30d",
-        infoFileName,
-        errorFileName,
       },
     });
     ```
