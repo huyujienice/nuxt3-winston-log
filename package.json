@@ -33,7 +33,9 @@
     "release": "npm run lint && npm run test && npm run prepack && npm version minor && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "patch": "npm run lint && npm run test && npm run prepack && npm version patch && npm publish",
+    "minor": "npm run lint && npm run test && npm run prepack && npm version minor && npm publish"
   },
   "dependencies": {
     "@nuxt/kit": "^3.6.5",
