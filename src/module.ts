@@ -9,7 +9,6 @@ function judgeIfStatus(params: any) {
   if (params === "undefined") {
     return false;
   }
-  //匹配任何空白字符，包括空格、制表符、换页符等等
   if (typeof params === "string") {
     if (params.replace(/(^s*)|(s*$)/g, "").length === 0) {
       return false;
