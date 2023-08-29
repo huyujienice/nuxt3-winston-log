@@ -15,6 +15,7 @@ export default <NitroAppPlugin>function (nitroApp) {
       console.log(`headers=${JSON.stringify(headers)}`);
     }
   });
+  
   // nitroApp.hooks.hook("render:response", (response, { event }) => {
   //   console.log("render:response");
   // });
