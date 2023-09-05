@@ -4,6 +4,7 @@ import { getLogger } from "./winstonLogger";
 export default defineNuxtPlugin((nuxtApp) => {
   if (!(<any>global)._isRebuildConsole) {
     console.log(`winstonLogger rebuild console`);
+    console.log(`nuxt3-winston-log v0.5`);
     const options = nuxtApp.$config.public.nuxt3WinstonLog;
     const globalLogger = getLogger(options);
     const originLog = console.log;
