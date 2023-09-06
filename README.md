@@ -64,6 +64,9 @@ $ yarn add nuxt3-winston-log # or npm i nuxt3-winston-log
       // Change this to keep things tidy.
       errorLogName: `%DATE%-${process.env.NODE_ENV}-error.log`,
 
+      // Set to `true` to skip auto render:html logging (level: info).
+      skipRequestMiddlewareHandler: false,
+
     }
     // ...
     ```
