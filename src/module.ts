@@ -35,6 +35,7 @@ export default defineNuxtModule<ModuleOptions>({
       infoLogName: `%DATE%-${process.env.NODE_ENV}-info.log`,
       errorLogPath: `./logs`,
       errorLogName: `%DATE%-${process.env.NODE_ENV}-error.log`,
+      skipRequestMiddlewareHandler: false,
     };
     const mergeOptions = {
       maxSize: judgeIfStatus(options?.maxSize)
@@ -55,14 +56,21 @@ export default defineNuxtModule<ModuleOptions>({
       errorLogName: judgeIfStatus(options?.errorLogName)
         ? options.errorLogName
         : defaultOptions.errorLogName,
+      skipRequestMiddlewareHandler: judgeIfStatus(
+        options?.skipRequestMiddlewareHandler
+      )
+        ? options.skipRequestMiddlewareHandler
+        : defaultOptions.skipRequestMiddlewareHandler,
     };
     nuxt.options.runtimeConfig.public.nuxt3WinstonLog = mergeOptions;
     const resolver = createResolver(import.meta.url);
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin(resolver.resolve("./runtime/plugin.server"));
-    nuxt.options.nitro.plugins = nuxt.options.nitro.plugins || [];
-    nuxt.options.nitro.plugins.push(
-      resolver.resolve("./runtime/consoleRoute.server")
-    );
+    if (mergeOptions.skipRequestMiddlewareHandler !== true) {
+      nuxt.options.nitro.plugins = nuxt.options.nitro.plugins || [];
+      nuxt.options.nitro.plugins.push(
+        resolver.resolve("./runtime/consoleRoute.server")
+      );
+    }
   },
 });
